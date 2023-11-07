@@ -12,6 +12,9 @@ function Square(props) {
 
 class Board extends React.Component {
   renderSquare(i) {
+    if (i < 0) {
+      return;
+    }
     return (
       <Square
         value={this.props.squares[i]}
@@ -19,6 +22,7 @@ class Board extends React.Component {
         key={i}
       />
     );
+    this.renderSquare(i - 1);
   }
 
   render() {
